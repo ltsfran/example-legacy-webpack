@@ -12,14 +12,20 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'assets/js/[name].[contenthash:8].js'
+    clean: true
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   plugins: [
     new PugPlugin({
       pretty: !isProduction,
       filename: '[name].phtml',
-      extractCss: {
+      css: {
         filename: 'css/[name].css'
+      },
+      js: {
+        filename: 'js/[name].js'
       }
     })
   ],
@@ -32,6 +38,10 @@ module.exports = {
       {
         test: /\.(css|styl)$/,
         use: ['css-loader', 'stylus-loader']
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader'
       }
     ]
   }

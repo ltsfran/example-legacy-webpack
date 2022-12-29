@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack",
     "build:watch": "cross-env NODE_ENV=development webpack",
     "preview": "vite preview"
@@ -21,6 +20,7 @@
     "rimraf": "3.0.2",
     "stylus": "0.59.0",
     "stylus-loader": "7.1.0",
+    "ts-loader": "9.4.2",
     "typescript": "4.9.4",
     "webpack": "5.75.0"
   },
