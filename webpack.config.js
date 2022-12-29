@@ -2,8 +2,12 @@ const path = require('path')
 const PugPlugin = require('pug-plugin')
 const WebpackUtil = require('./webpack.utils')
 
+const mode = process.env.NODE_ENV ?? 'production'
+const isProduction = mode === 'production'
+
 module.exports = {
-  mode: 'production',
+  mode,
+  watch: !isProduction,
   entry: WebpackUtil.filesToCompileSync('pug/modules', /\.pug$/),
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -12,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new PugPlugin({
-      pretty: true,
+      pretty: !isProduction,
       filename: '[name].phtml',
       extractCss: {
         filename: 'css/[name].css'
