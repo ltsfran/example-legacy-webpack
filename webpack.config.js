@@ -22,10 +22,22 @@ module.exports = {
       pretty: !isProduction,
       filename: '[name].phtml',
       css: {
-        filename: 'css/[name].css'
+        filename: (pathData) => {
+          const fileDirectory = pathData.filename
+            .replace(/\/index\.styl$/, '')
+            .replace(`${__dirname}/stylus`, '')
+            .replace('modules/', '')
+          return `css/${fileDirectory}/index.styl`
+        }
       },
       js: {
-        filename: 'js/[name].js'
+        filename: (pathData) => {
+          const fileDirectory = pathData.filename
+            .replace(/\/index\.ts$/, '')
+            .replace(`${__dirname}/typescript`, '')
+            .replace('modules/', '')
+          return `js/${fileDirectory}/index.js`
+        }
       }
     })
   ],

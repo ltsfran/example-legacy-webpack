@@ -3,8 +3,11 @@ doctype html
 html(lang=page.lang, xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#")
   head
     link(href=require('/atomic/css/index.styl') rel="stylesheet")
+    block header_templates
   body
     header header
     block content
     footer footer
     script(src=require('/typescript/index.ts') defer='defer')
+
+    block footer_templates

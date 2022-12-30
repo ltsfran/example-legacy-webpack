@@ -1,4 +1,10 @@
 extends /atomic/html/_05-layouts/l-layout.pug
 
+block header_templates
+  link(href=require('/stylus/modules/landing/index/index.styl') rel="stylesheet")
+
 block content
   div landing
+
+block footer_templates
+  script(src=require('/typescript/modules/landing/index/index.ts') defer='defer')
